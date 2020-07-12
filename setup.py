@@ -16,6 +16,6 @@ setup(
     url="https://github.com/danilocgsilva/aws-data-mock",
     author="Danilo Carlos de Góes Silva",
     author_email="contact@danilocgsilva.me",
-    packages=["awsmock"],
+    packages=["awsapimock"],
     include_package_data=True
 )
