@@ -15,3 +15,47 @@ class AWS_General_Entities_Mocker:
 
     def get_ip(self):
         return "-".join([random_until_255(), random_until_255(), random_until_255(), random_until_255()])
+
+
+    def get_mocked_network_interface_data(
+        self,
+        security_group_id: str, 
+        owner_id: str, 
+        private_ip: str,
+        subnet_id: str,
+        vpc_id: str
+    ) -> dict:
+        return {
+            "Attachment": {
+                "AttachTime": "2018-10-18T00:44:48.000Z",
+                "AttachmentId": "eni-attach-" + get_exadecimal_sample(17),
+                "DeleteOnTermination": True,
+                "DeviceIndex": 0,
+                "Status": "attached"
+            },
+            "Description": "",
+            "Groups": [
+                {
+                    "GroupName": "default",
+                    "GroupId": security_group_id
+                }
+            ],
+            "Ipv6Addresses": [],
+            "MacAddress": get_mac_address(),
+            "NetworkInterfaceId": "eni-" + get_exadecimal_sample(17),
+            "OwnerId": owner_id,
+            "PrivateDnsName": "ip-" + private_ip.replace(".", "-") + ".ec2.internal",
+            "PrivateIpAddress": private_ip,
+            "PrivateIpAddresses": [
+                {
+                    "Primary": True,
+                    "PrivateDnsName": "ip-" + private_ip.replace(".", "-") + ".ec2.internal",
+                    "PrivateIpAddress": private_ip
+                }
+            ],
+            "SourceDestCheck": True,
+            "Status": "in-use",
+            "SubnetId": subnet_id,
+            "VpcId": vpc_id,
+            "InterfaceType": "interface"
+        }
