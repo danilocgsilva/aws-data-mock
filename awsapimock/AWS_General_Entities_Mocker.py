@@ -1,6 +1,6 @@
 import math
 from random import random
-from awsapimock.aws_data_helpers import random_until_255
+from awsapimock.aws_data_helpers import random_until_255, get_exadecimal_sample, get_mac_address
 
 class AWS_General_Entities_Mocker:
 

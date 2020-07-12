@@ -1,4 +1,4 @@
-from awsclimock.Commands_Output.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
+from awsapimock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
 
 class Regions_Data_Generator(Entity_Generator_Command_Interface):
 

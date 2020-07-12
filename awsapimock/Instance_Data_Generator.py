@@ -1,9 +1,9 @@
-from awsapimock.Commands_Output.Entity_Generator_Interface import Entity_Generator_Interface
+from awsapimock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
 from awsapimock.AWS_General_Entities_Mocker import AWS_General_Entities_Mocker
 from awsapimock.aws_data_helpers import get_exadecimal_sample
 
 
-class Instance_Data_Generator(Entity_Generator_Interface):
+class Instance_Data_Generator(Entity_Generator_Command_Interface):
 
     def generate(self) -> dict:
         aws_general_entities_mocker = AWS_General_Entities_Mocker()
@@ -63,7 +63,7 @@ class Instance_Data_Generator(Entity_Generator_Interface):
                             "EnaSupport": True,
                             "Hypervisor": "xen",
                             "NetworkInterfaces": [
-                                get_mocked_network_interface_data(
+                                aws_general_entities_mocker.get_mocked_network_interface_data(
                                     security_group_id, 
                                     owner_id, 
                                     private_ip,
