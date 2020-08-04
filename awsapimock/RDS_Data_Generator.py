@@ -1,4 +1,5 @@
 from awsapimock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
+from awsapimock.VpcSecurityGroup_Data_Generator import VpcSecurityGroup_Data_Generator
 
 
 class RDS_Data_Generator(Entity_Generator_Command_Interface):
@@ -24,10 +25,7 @@ class RDS_Data_Generator(Entity_Generator_Command_Interface):
                     "BackupRetentionPeriod": 72,
                     "DBSecurityGroups": [],
                     "VpcSecurityGroups": [
-                        {
-                            "VpcSecurityGroupId": "sg-abc123409ef",
-                            "Status": "active"
-                        }
+                        VpcSecurityGroup_Data_Generator().generate()
                     ],
                     "DBParameterGroups": [
                         {
