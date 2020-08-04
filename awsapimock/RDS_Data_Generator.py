@@ -4,7 +4,18 @@ from awsapimock.VpcSecurityGroup_Data_Generator import VpcSecurityGroup_Data_Gen
 
 class RDS_Data_Generator(Entity_Generator_Command_Interface):
 
+    def __init__(self):
+        self.security_group_id = None
+
+    def set_security_group_id(self, security_group_id: str):
+        self.security_group_id = security_group_id
+
     def generate(self):
+
+        sg_generator = VpcSecurityGroup_Data_Generator()
+
+        if self.security_group_id:
+            sg_generator.set_group_id(self.security_group_id)
 
         return {
             "DBInstances": [
@@ -25,7 +36,7 @@ class RDS_Data_Generator(Entity_Generator_Command_Interface):
                     "BackupRetentionPeriod": 72,
                     "DBSecurityGroups": [],
                     "VpcSecurityGroups": [
-                        VpcSecurityGroup_Data_Generator().generate()
+                        sg_generator.generate()
                     ],
                     "DBParameterGroups": [
                         {
