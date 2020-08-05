@@ -1,11 +1,13 @@
 from awsapimock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
 from awsapimock.VpcSecurityGroup_Data_Generator import VpcSecurityGroup_Data_Generator
+from awsapimock.RDS_Factory import RDS_Factory
 
 
 class RDS_Single_Data_Generator(Entity_Generator_Command_Interface):
 
     def __init__(self):
         self.security_group_id = None
+        self.rds_factory = RDS_Factory()
 
     def set_security_group_id(self, security_group_id: str):
         self.security_group_id = security_group_id
@@ -18,19 +20,19 @@ class RDS_Single_Data_Generator(Entity_Generator_Command_Interface):
             sg_generator.set_group_id(self.security_group_id)
 
         return {
-              "DBInstanceIdentifier": "main-database",
-              "DBInstanceClass": "db.t2.supermini",
+              "DBInstanceIdentifier": self.rds_factory.get_DBInstanceIdentifier(),
+              "DBInstanceClass": self.rds_factory.get_DBInstanceClass(),
               "Engine": "mysql",
               "DBInstanceStatus": "available",
-              "MasterUsername": "root",
-              "DBName": "themaindatabase",
+              "MasterUsername": self.rds_factory.get_MasterUsername(),
+              "DBName": self.rds_factory.get_DBName(),
               "Endpoint": {
-                  "Address": "main-database.abcdefgwyz.mo-east-4.rds.amazonaws.com",
+                  "Address": self.rds_factory.get_EndpointAddress(),
                   "Port": 3306,
-                  "HostedZoneId": "ABCDEXYZ1234890"
+                  "HostedZoneId": self.rds_factory.get_EndpointHostedZoneId()
               },
               "AllocatedStorage": 20,
-              "PreferredBackupWindow": "12:00-13:00",
+              "PreferredBackupWindow": self.rds_factory.get_PreferredBackupWindow(),
               "BackupRetentionPeriod": 72,
               "DBSecurityGroups": [],
               "VpcSecurityGroups": [
