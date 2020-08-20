@@ -51,7 +51,7 @@ class Security_Group_Data_Generator(Entity_Generator_Command_Interface):
         tags = []
 
         for x in range(num):
-            tags.append(Tag_Generator.get_tag())
+            tags.append(Tag_Generator().get_tag())
 
         return tags
 
