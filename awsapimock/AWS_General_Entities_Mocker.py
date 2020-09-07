@@ -27,7 +27,7 @@ class AWS_General_Entities_Mocker:
     ) -> dict:
         return {
             "Attachment": {
-                "AttachTime": "2018-10-18T00:44:48.000Z",
+                "AttachTime": self.getRandomTimeStringZ(),
                 "AttachmentId": "eni-attach-" + get_exadecimal_sample(17),
                 "DeleteOnTermination": True,
                 "DeviceIndex": 0,
@@ -59,3 +59,17 @@ class AWS_General_Entities_Mocker:
             "VpcId": vpc_id,
             "InterfaceType": "interface"
         }
+
+    def getRandomTimeStringZ(self) -> str:
+
+        year = str(math.ceil((random() * 10) + 2010))
+        month = '{:02}'.format(math.ceil(random() * 12))
+        day = '{:02}'.format(math.ceil(random() * 28))
+        hour = '{:02}'.format(math.floor(random() * 24))
+        minute = '{:02}'.format(math.floor(random() * 60))
+        second = '{:02}'.format(math.floor(random() * 60))
+
+        return year + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second + ".000Z"
+
+    def getRandomTimeStringGMT(self) -> str:
+        return '2018-12-11 11:13:25 GMT'
