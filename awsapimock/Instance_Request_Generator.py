@@ -3,7 +3,7 @@ from awsapimock.AWS_General_Entities_Mocker import AWS_General_Entities_Mocker
 from awsapimock.aws_data_helpers import get_exadecimal_sample
 
 
-class Instance_Data_Generator(Entity_Generator_Command_Interface):
+class Instance_Request_Generator(Entity_Generator_Command_Interface):
 
     def generate(self) -> dict:
         aws_general_entities_mocker = AWS_General_Entities_Mocker()
