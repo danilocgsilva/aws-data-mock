@@ -1,6 +1,8 @@
 import math
 from random import random
 from awsapimock.aws_data_helpers import random_until_255, get_exadecimal_sample, get_mac_address
+from awsapimock.FullFormatDateMocking import FullFormatDateMocking
+
 
 class AWS_General_Entities_Mocker:
 
@@ -25,9 +27,12 @@ class AWS_General_Entities_Mocker:
         subnet_id: str,
         vpc_id: str
     ) -> dict:
+
+        fullFormatDateMocking = FullFormatDateMocking()
+    
         return {
             "Attachment": {
-                "AttachTime": self.getRandomTimeStringZ(),
+                "AttachTime": fullFormatDateMocking.getRandomTimeStringZ(),
                 "AttachmentId": "eni-attach-" + get_exadecimal_sample(17),
                 "DeleteOnTermination": True,
                 "DeviceIndex": 0,
@@ -60,16 +65,3 @@ class AWS_General_Entities_Mocker:
             "InterfaceType": "interface"
         }
 
-    def getRandomTimeStringZ(self) -> str:
-
-        year = str(math.ceil((random() * 10) + 2010))
-        month = '{:02}'.format(math.ceil(random() * 12))
-        day = '{:02}'.format(math.ceil(random() * 28))
-        hour = '{:02}'.format(math.floor(random() * 24))
-        minute = '{:02}'.format(math.floor(random() * 60))
-        second = '{:02}'.format(math.floor(random() * 60))
-
-        return year + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second + ".000Z"
-
-    def getRandomTimeStringGMT(self) -> str:
-        return '2018-12-11 11:13:25 GMT'

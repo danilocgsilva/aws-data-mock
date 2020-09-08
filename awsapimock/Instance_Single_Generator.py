@@ -1,6 +1,7 @@
 from awsapimock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
 from awsapimock.aws_data_helpers import get_exadecimal_sample
 from awsapimock.AWS_General_Entities_Mocker import AWS_General_Entities_Mocker
+from awsapimock.FullFormatDateMocking import FullFormatDateMocking
 
 
 class Instance_Single_Generator(Entity_Generator_Command_Interface):
@@ -20,7 +21,7 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
             "InstanceId": "i-" + get_exadecimal_sample(17),
             "InstanceType": "t2.micro",
             "KeyName": "my-secret-key",
-            "LaunchTime": aws_general_entities_mocker.getRandomTimeString(),
+            "LaunchTime": FullFormatDateMocking().getRandomTimeStringZ(),
             "Monitoring": {
                 "State": "disabled"
             },
