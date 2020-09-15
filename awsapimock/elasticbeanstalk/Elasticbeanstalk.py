@@ -7,10 +7,12 @@ from awsapimock.aws_data_helpers import get_exadecimal_sample
 
 class Elasticbeanstalk:
 
-    def describe_single_application(self):
+    def describe_single_application(self, application_name = None):
 
         fake_region = 'mo-north-1'
-        application_name = "app-name-" + str(math.ceil(random() * 10000))
+        # print("---" + application_name + "---")
+        if application_name == None:
+            application_name = "app-name-" + str(math.ceil(random() * 10000))
         datetimesimulated = datetime.datetime.fromtimestamp(
             time.time() - (random() * 300000000)
         )

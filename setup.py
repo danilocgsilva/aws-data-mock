@@ -1,6 +1,6 @@
 from setuptools import setup
 
-VERSION = '2.0.2.1'
+VERSION = '2.0.3'
 
 def readme():
     with open("README.md") as f:
