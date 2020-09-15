@@ -1,6 +1,6 @@
 from setuptools import setup
 
-VERSION = '2.0.2'
+VERSION = '2.0.2.1'
 
 def readme():
     with open("README.md") as f:
@@ -16,6 +16,6 @@ setup(
     url="https://github.com/danilocgsilva/aws-data-mock",
     author="Danilo Carlos de Góes Silva",
     author_email="contact@danilocgsilva.me",
-    packages=["awsapimock"],
+    packages=['awsapimock', 'awsapimock.elasticbeanstalk'],
     include_package_data=True
 )
