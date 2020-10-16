@@ -6,6 +6,13 @@ from awsapimock.FullFormatDateMocking import FullFormatDateMocking
 
 class Instance_Single_Generator(Entity_Generator_Command_Interface):
 
+    def __init__(self):
+        self.instance_id = None
+
+    def setInstanceId(self, instance_id: str):
+        self.instance_id = instance_id
+        return self
+
     def generate(self) -> dict:
 
         aws_general_entities_mocker = AWS_General_Entities_Mocker()
@@ -14,11 +21,15 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
         vpc_id = "vpc-" + get_exadecimal_sample(8)
         security_group_id = "sg-" + get_exadecimal_sample(17)
         owner_id = aws_general_entities_mocker.get_owner_id()
-        
-        data = {
+        if self.instance_id:
+            instance_id_hexa = self.instance_id
+        else:
+            instance_id_hexa = get_exadecimal_sample(17)
+
+        instance_data = {
             "AmiLaunchIndex": 0,
             "ImageId": "ami-" + get_exadecimal_sample(17),
-            "InstanceId": "i-" + get_exadecimal_sample(17),
+            "InstanceId": "i-" + instance_id_hexa,
             "InstanceType": "t2.micro",
             "KeyName": "my-secret-key",
             "LaunchTime": FullFormatDateMocking().getRandomTimeStringZ(),
@@ -105,4 +116,4 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
             }
         }
                  
-        return data
+        return instance_data
