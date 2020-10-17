@@ -17,6 +17,7 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
 
         aws_general_entities_mocker = AWS_General_Entities_Mocker()
         private_ip = aws_general_entities_mocker.get_ip()
+        public_ip = aws_general_entities_mocker.get_ip()
         subnet_id = "subnet-" + get_exadecimal_sample(8)
         vpc_id = "vpc-" + get_exadecimal_sample(8)
         security_group_id = "sg-" + get_exadecimal_sample(17)
@@ -46,6 +47,7 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
             "PrivateIpAddress": private_ip,
             "ProductCodes": [],
             "PublicDnsName": "",
+            "PublicIpAddress": public_ip,
             "State": {
                 "Code": 80,
                 "Name": "stopped"
