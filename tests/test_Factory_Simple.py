@@ -1,8 +1,7 @@
 import unittest
 import sys
 sys.path.insert(1, "..")
-from awsapimock.Factory_Simple import Factory_Simple
-
+from aws_api_mock.Factory_Simple import Factory_Simple
 
 class test_Factory_Simple(unittest.TestCase):
 

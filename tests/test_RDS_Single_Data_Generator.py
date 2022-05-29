@@ -1,8 +1,7 @@
 import unittest
 import sys
 sys.path.insert(1, "..")
-from awsapimock.RDS_Single_Data_Generator import RDS_Single_Data_Generator
-
+from aws_api_mock.RDS_Single_Data_Generator import RDS_Single_Data_Generator
 
 class test_RDS_Single_Data_Generator(unittest.TestCase):
 

@@ -1,8 +1,7 @@
 import unittest
 import sys
 sys.path.insert(1, "..")
-from awsapimock.Lambda_Data_Generator import Lambda_Data_Generator
-
+from aws_api_mock.Lambda_Data_Generator import Lambda_Data_Generator
 
 class test_Lambda_Data_Generator(unittest.TestCase):
 

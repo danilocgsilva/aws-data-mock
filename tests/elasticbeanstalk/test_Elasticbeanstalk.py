@@ -1,8 +1,7 @@
 import unittest
 import sys
 sys.path.insert(1, "..")
-from awsapimock.elasticbeanstalk.Elasticbeanstalk import Elasticbeanstalk
-
+from aws_api_mock.elasticbeanstalk.Elasticbeanstalk import Elasticbeanstalk
 
 class test_Elasticbeanstalk(unittest.TestCase):
 

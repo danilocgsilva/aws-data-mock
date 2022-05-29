@@ -1,9 +1,8 @@
 import unittest
 import sys
 sys.path.insert(1, "..")
-from awsapimock.VpcSecurityGroup_Data_Generator import VpcSecurityGroup_Data_Generator
-from awsapimock.aws_data_helpers import get_exadecimal_sample
-
+from aws_api_mock.VpcSecurityGroup_Data_Generator import VpcSecurityGroup_Data_Generator
+from aws_api_mock.aws_data_helpers import get_exadecimal_sample
 
 class test_VpcSecurityGroup_Data_Generator(unittest.TestCase):
 

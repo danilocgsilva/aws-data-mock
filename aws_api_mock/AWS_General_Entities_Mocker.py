@@ -13,9 +13,8 @@ class AWS_General_Entities_Mocker:
 
         return owner_id
 
-
     def get_ip(self):
-        return "-".join([random_until_255(), random_until_255(), random_until_255(), random_until_255()])
+        return ".".join([random_until_255(), random_until_255(), random_until_255(), random_until_255()])
 
 
     def get_mocked_network_interface_data(

@@ -1,9 +1,8 @@
 import unittest
 import sys
 sys.path.insert(1, "..")
-from awsapimock.aws_data_helpers import \
+from aws_api_mock.aws_data_helpers import \
     generate_owner_code, get_exadecimal_sample, generate_random_string_with_hard_chars, random_until_n
-
 
 class test_Aws_data_helpers(unittest.TestCase):
 

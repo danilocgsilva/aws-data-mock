@@ -2,7 +2,7 @@ import datetime
 import math
 import time
 from random import random
-from awsapimock.aws_data_helpers import get_exadecimal_sample
+from aws_api_mock.aws_data_helpers import get_exadecimal_sample
 
 
 class Elasticbeanstalk:

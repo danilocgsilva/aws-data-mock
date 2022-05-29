@@ -1,7 +1,7 @@
 import unittest
 import sys
 sys.path.insert(1, "..")
-from awsapimock.Instance_Single_Generator import Instance_Single_Generator
+from aws_api_mock.Instance_Single_Generator import Instance_Single_Generator
 
 class test_Instance_Single_Generator(unittest.TestCase):
 

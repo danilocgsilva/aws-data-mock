@@ -1,3 +1,4 @@
+from email.policy import default
 from aws_api_mock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
 from aws_api_mock.aws_data_helpers import get_exadecimal_sample
 from aws_api_mock.AWS_General_Entities_Mocker import AWS_General_Entities_Mocker
@@ -7,24 +8,48 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
 
     def __init__(self):
         self.instance_id = None
+        self.public_ip = None
+        self.tags = []
+        self.aws_general_entities_mocker = AWS_General_Entities_Mocker()
 
     def setInstanceId(self, instance_id: str):
         self.instance_id = instance_id
         return self
 
-    def generate(self) -> dict:
+    def setPublicIp(self, publicId: str):
+        self.public_ip = publicId
 
-        aws_general_entities_mocker = AWS_General_Entities_Mocker()
-        private_ip = aws_general_entities_mocker.get_ip()
-        public_ip = aws_general_entities_mocker.get_ip()
+    def addTag(self, key: str, value: str):
+
+        new_tags = {
+            "Key": key,
+            "Value": value
+        }
+
+        self.tags.append(new_tags)
+
+    def set_data(self):
+        if not self.public_ip:
+            self.public_ip = self.aws_general_entities_mocker.get_ip()
+
+    def generate(self) -> dict:
+        self.set_data()
+        private_ip = self.aws_general_entities_mocker.get_ip()
         subnet_id = "subnet-" + get_exadecimal_sample(8)
         vpc_id = "vpc-" + get_exadecimal_sample(8)
         security_group_id = "sg-" + get_exadecimal_sample(17)
-        owner_id = aws_general_entities_mocker.get_owner_id()
+        owner_id = self.aws_general_entities_mocker.get_owner_id()
         if self.instance_id:
             instance_id_hexa = self.instance_id
         else:
             instance_id_hexa = get_exadecimal_sample(17)
+
+        default_tag = {
+            "Key": "Description",
+            "Value": "General porpouse machine"
+        }
+
+        self.tags.append(default_tag)
 
         instance_data = {
             "AmiLaunchIndex": 0,
@@ -46,7 +71,7 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
             "PrivateIpAddress": private_ip,
             "ProductCodes": [],
             "PublicDnsName": "",
-            "PublicIpAddress": public_ip,
+            "PublicIpAddress": self.public_ip,
             "State": {
                 "Code": 80,
                 "Name": "stopped"
@@ -71,7 +96,7 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
             "EnaSupport": True,
             "Hypervisor": "xen",
             "NetworkInterfaces": [
-                aws_general_entities_mocker.get_mocked_network_interface_data(
+                self.aws_general_entities_mocker.get_mocked_network_interface_data(
                     security_group_id, 
                     owner_id, 
                     private_ip,
@@ -88,16 +113,11 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
                 }
             ],
             "SourceDestCheck": True,
-                "StateReason": {
+            "StateReason": {
                 "Code": "Client.UserInitiatedShutdown",
                 "Message": "Client.UserInitiatedShutdown: User initiated shutdown"
             },
-            "Tags": [
-                {
-                    "Key": "Description",
-                    "Value": "General porpouse machine"
-                },
-            ],
+            "Tags": self.tags,
             "VirtualizationType": "hvm",
             "CpuOptions": {
                 "CoreCount": 1,
