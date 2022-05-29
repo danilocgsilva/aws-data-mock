@@ -1,7 +1,6 @@
 import math
 from random import random
 
-
 class GeneralDateUtilities:
 
     def getRandomYear(self) -> str:

@@ -1,7 +1,6 @@
-from awsapimock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
-from awsapimock.VpcSecurityGroup_Data_Generator import VpcSecurityGroup_Data_Generator
-from awsapimock.RDS_Factory import RDS_Factory
-
+from aws_api_mock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
+from aws_api_mock.VpcSecurityGroup_Data_Generator import VpcSecurityGroup_Data_Generator
+from aws_api_mock.RDS_Factory import RDS_Factory
 
 class RDS_Single_Data_Generator(Entity_Generator_Command_Interface):
 

@@ -1,7 +1,7 @@
 import math
 from random import random
-from awsapimock.aws_data_helpers import random_until_255, get_exadecimal_sample, get_mac_address
-from awsapimock.FullFormatDateMocking import FullFormatDateMocking
+from aws_api_mock.aws_data_helpers import random_until_255, get_exadecimal_sample, get_mac_address
+from aws_api_mock.FullFormatDateMocking import FullFormatDateMocking
 
 class AWS_General_Entities_Mocker:
 

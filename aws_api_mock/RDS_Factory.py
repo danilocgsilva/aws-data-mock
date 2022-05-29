@@ -1,5 +1,4 @@
-from awsapimock.Factory_Simple import Factory_Simple
-
+from aws_api_mock.Factory_Simple import Factory_Simple
 
 class RDS_Factory:
 

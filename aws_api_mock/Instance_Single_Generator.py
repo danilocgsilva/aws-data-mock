@@ -1,8 +1,7 @@
-from awsapimock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
-from awsapimock.aws_data_helpers import get_exadecimal_sample
-from awsapimock.AWS_General_Entities_Mocker import AWS_General_Entities_Mocker
-from awsapimock.FullFormatDateMocking import FullFormatDateMocking
-
+from aws_api_mock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
+from aws_api_mock.aws_data_helpers import get_exadecimal_sample
+from aws_api_mock.AWS_General_Entities_Mocker import AWS_General_Entities_Mocker
+from aws_api_mock.FullFormatDateMocking import FullFormatDateMocking
 
 class Instance_Single_Generator(Entity_Generator_Command_Interface):
 

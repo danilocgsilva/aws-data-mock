@@ -1,6 +1,5 @@
 class Tag_Generator:
 
-
     def get_tag(self):
         
         return {

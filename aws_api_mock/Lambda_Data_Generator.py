@@ -1,5 +1,5 @@
-from awsapimock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
-from awsapimock.aws_data_helpers import generate_owner_code, get_exadecimal_sample, generate_random_string_with_hard_chars, random_until_n
+from aws_api_mock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
+from aws_api_mock.aws_data_helpers import generate_owner_code, get_exadecimal_sample, generate_random_string_with_hard_chars, random_until_n
 
 
 class Lambda_Data_Generator(Entity_Generator_Command_Interface):

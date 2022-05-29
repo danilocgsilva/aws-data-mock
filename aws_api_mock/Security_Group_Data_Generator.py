@@ -1,11 +1,10 @@
 import math
 from random import random
-from awsapimock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
-from awsapimock.Ip_Permission_Generator import Ip_Permission_Generator
-from awsapimock.Tag_Generator import Tag_Generator
-from awsapimock.aws_data_helpers import get_exadecimal_sample
-from awsapimock.AWS_General_Entities_Mocker import AWS_General_Entities_Mocker
-
+from aws_api_mock.Entity_Generator_Command_Interface import Entity_Generator_Command_Interface
+from aws_api_mock.Ip_Permission_Generator import Ip_Permission_Generator
+from aws_api_mock.Tag_Generator import Tag_Generator
+from aws_api_mock.aws_data_helpers import get_exadecimal_sample
+from aws_api_mock.AWS_General_Entities_Mocker import AWS_General_Entities_Mocker
 
 class Security_Group_Data_Generator(Entity_Generator_Command_Interface):
 

@@ -1,7 +1,6 @@
 from random import random
 import math
-from awsapimock.GeneralDateUtilities import GeneralDateUtilities
-
+from aws_api_mock.GeneralDateUtilities import GeneralDateUtilities
 
 class FullFormatDateMocking:
 

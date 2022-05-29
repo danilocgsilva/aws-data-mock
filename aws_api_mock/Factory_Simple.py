@@ -1,7 +1,6 @@
 from random import random
 import math
 
-
 class Factory_Simple:
 
     def __init__(self):
