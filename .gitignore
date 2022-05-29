@@ -1,2 +1,4 @@
 __pycache__
 .idea
+aws_api_mock.egg-info
+build

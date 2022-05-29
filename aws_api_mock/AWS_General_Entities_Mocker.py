@@ -3,7 +3,6 @@ from random import random
 from awsapimock.aws_data_helpers import random_until_255, get_exadecimal_sample, get_mac_address
 from awsapimock.FullFormatDateMocking import FullFormatDateMocking
 
-
 class AWS_General_Entities_Mocker:
 
     def get_owner_id(self):
