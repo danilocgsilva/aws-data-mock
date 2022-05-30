@@ -9,6 +9,7 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
     def __init__(self):
         self.instance_id = None
         self.public_ip = None
+        self.image_id = None
         self.tags = []
         self.aws_general_entities_mocker = AWS_General_Entities_Mocker()
 
@@ -18,6 +19,11 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
 
     def setPublicIp(self, publicId: str):
         self.public_ip = publicId
+        return self
+
+    def setImageId(self, image_id: str):
+        self.image_id = image_id
+        return self
 
     def addTag(self, key: str, value: str):
 
@@ -28,9 +34,16 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
 
         self.tags.append(new_tags)
 
+        return self
+
+    def getImageId(self):
+        return self.image_id
+
     def set_data(self):
         if not self.public_ip:
             self.public_ip = self.aws_general_entities_mocker.get_ip()
+        if not self.image_id:
+            self.image_id = "ami-" + get_exadecimal_sample(17)
 
     def generate(self) -> dict:
         self.set_data()
@@ -53,7 +66,7 @@ class Instance_Single_Generator(Entity_Generator_Command_Interface):
 
         instance_data = {
             "AmiLaunchIndex": 0,
-            "ImageId": "ami-" + get_exadecimal_sample(17),
+            "ImageId": self.image_id,
             "InstanceId": "i-" + instance_id_hexa,
             "InstanceType": "t2.micro",
             "KeyName": "my-secret-key",
