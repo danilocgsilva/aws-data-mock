@@ -1,138 +1,66 @@
-from datetime import datetime
-
-
-import datetime
-from dateutil.tz import tzutc
-
 class EC2_Client:
 
-    def describe_images(self) -> list:
-        return [
-            {
-                "AmiLaunchIndex": 0,
-                "ImageId": "ami-c2db96fa4c97eafae",
-                "InstanceId": "i-33f65e69d7e4c700c",
-                "InstanceType": "t2.nano",
-                "KeyName": "main4",
-                "LaunchTime": datetime.datetime(2012,5,29,23,1,51, tzinfo=tzutc()),
-                "Monitoring": {
-                    "State": "disabled"
-                },
-                "Placement": {
-                    "AvailabilityZone": "us-east-1b",
-                    "GroupName": "",
-                    "Tenancy": "default"
-                },
-                "PrivateDnsName": "ip-112-45-1-42.ec2.internal",
-                "PrivateIpAddress": "112.45.1.2.42",
-                "ProductCodes": [],
-                "PublicDnsName": "ec2-43-112-265-55.compute-1.amazonaws.com",
-                "PublicIpAddress": "43.112.265.55",
-                "State": {
-                    "Code": 16,
-                    "Name": "running"
-                },
-                "StateTransitionReason": "",
-                "SubnetId": "subnet-b4ed4596f46c79e50",
-                "VpcId": "vpc-67c488b7474976a52",
-                "Architecture": "x86_64",
-                "BlockDeviceMappings": [
-                    {
-                        "DeviceName": "/dev/sda1",
-                        "Ebs": {
-                            "AttachTime": datetime.datetime(2012,5,29,23,1,52, tzinfo=tzutc()),
-                            "DeleteOnTermination": True,
-                            "Status": "attached",
-                            "VolumeId": "vol-0add7002f633105d1"
+    def describe_images(self, *args, **kwargs) -> list:
+        return {
+            "Images": [
+                {
+                    "Architecture": "x86_64",
+                    "CreationDate": "2020-09-08T00:55:25.000Z",
+                    "ImageId": "ami-0dba2cb6798deb6d8",
+                    "ImageLocation": "099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20200907",
+                    "ImageType": "machine",
+                    "Public": True,
+                    "OwnerId": "099720109477",
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "State": "available",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda1",
+                            "Ebs": {
+                                "DeleteOnTermination": True,
+                                "SnapshotId": "snap-0f06f1549ff7327c9",
+                                "VolumeSize": 8,
+                                "VolumeType": "gp2",
+                                "Encrypted": False
+                            }
+                        },
+                        {
+                            "DeviceName": "/dev/sdb",
+                            "VirtualName": "ephemeral0"
+                        },
+                        {
+                            "DeviceName": "/dev/sdc",
+                            "VirtualName": "ephemeral1"
                         }
-                    }
-                ],
-                "ClientToken": "f015b066-af24-456b-97e9-3494e3e054a4",
-                "EbsOptimized": False,
-                "EnaSupport": True,
-                "Hypervisor": "xen",
-                "NetworkInterfaces": [
-                    {
-                        "Association": {
-                            "IpOwnerId": "amazon",
-                            "PublicDnsName": "ec2-43-112-265-55.compute-1.amazonaws.com",
-                            "PublicIp": "43.112.265.55"
-                        },
-                        "Attachment": {
-                            "AttachTime": datetime.datetime(2012,5,29,23,1,51, tzinfo=tzutc()),
-                            "AttachmentId": "eni-attach-0658d7c11b9197790",
-                            "DeleteOnTermination": True,
-                            "DeviceIndex": 0,
-                            "Status": "attached",
-                            "NetworkCardIndex": 0
-                        },
-                        "Description": "",
-                        "Groups": [
-                            {
-                                "GroupName": "securitygroup-at-20220529-20h01m37s",
-                                "GroupId": "sg-577df71317764547b"
-                            }
-                        ],
-                        "Ipv6Addresses": [],
-                        "MacAddress": "12:b6:bf:d8:7e:5b",
-                        "NetworkInterfaceId": "eni-0b88bdad9de246cd6",
-                        "OwnerId": "063695957269",
-                        "PrivateDnsName": "ip-112-45-1-42.ec2.internal",
-                        "PrivateIpAddress": "112.45.1.2.42",
-                        "PrivateIpAddresses": [
-                            {
-                                "Association": {
-                                    "IpOwnerId": "amazon",
-                                    "PublicDnsName": "ec2-43-112-265-55.compute-1.amazonaws.com",
-                                    "PublicIp": "43.112.265.55"
-                                },
-                                "Primary": True,
-                                "PrivateDnsName": "ip-112-45-1-42.ec2.internal",
-                                "PrivateIpAddress": "112.45.1.2.42"
-                            }
-                        ],
-                        "SourceDestCheck": True,
-                        "Status": "in-use",
-                        "SubnetId": "subnet-b4ed4596f46c79e50",
-                        "VpcId": "vpc-67c488b7474976a52",
-                        "InterfaceType": "interface"
-                    }
-                ],
-                "RootDeviceName": "/dev/sda1",
-                "RootDeviceType": "ebs",
-                "SecurityGroups": [
-                    {
-                        "GroupName": "securitygroup-at-20120529-20h01m37s",
-                        "GroupId": "sg-577df71317764547b"
-                    }
-                ],
-                "SourceDestCheck": True,
-                "VirtualizationType": "hvm",
-                "CpuOptions": {
-                    "CoreCount": 1,
-                    "ThreadsPerCore": 1
+                    ],
+                    "Description": "Canonical, Ubuntu, 20.04 LTS, amd64 focal image build on 2020-09-07",
+                    "EnaSupport": True,
+                    "Hypervisor": "xen",
+                    "Name": "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20200907",
+                    "RootDeviceName": "/dev/sda1",
+                    "RootDeviceType": "ebs",
+                    "SriovNetSupport": "simple",
+                    "VirtualizationType": "hvm",
+                    "DeprecationTime": "2022-09-08T00:55:25.000Z"
+                }
+            ],
+            "ResponseMetadata": {
+                "RequestId": "fe624dc5-f56b-4dca-8ec7-f91ba02ba4f4",
+                "HTTPStatusCode": 200,
+                "HTTPHeaders": {
+                    "x-amzn-requestid": "fe624dc5-f56b-4dca-8ec7-f91ba02ba4f4",
+                    "cache-control": "no-cache, no-store",
+                    "strict-transport-security": "max-age=31536000; includeSubDomains",
+                    "vary": "accept-encoding",
+                    "content-type": "text/xml;charset=UTF-8",
+                    "content-length": "2256",
+                    "date": "Tue, 31 May 2022 04:21:19 GMT",
+                    "server": "AmazonEC2"
                 },
-                "CapacityReservationSpecification": {
-                    "CapacityReservationPreference": "open"
-                },
-                "HibernationOptions": {
-                    "Configured": False
-                },
-                "MetadataOptions": {
-                    "State": "applied",
-                    "HttpTokens": "optional",
-                    "HttpPutResponseHopLimit": 1,
-                    "HttpEndpoint": "enabled",
-                    "HttpProtocolIpv6": "disabled"
-                },
-                "EnclaveOptions": {
-                    "Enabled": False
-                },
-                "PlatformDetails": "Linux/UNIX",
-                "UsageOperation": "RunInstances",
-                "UsageOperationUpdateTime": datetime.datetime(2012,5,29,23,1,51, tzinfo=tzutc())
+                "RetryAttempts": 0
             }
-        ]
+        }
 
     def describe_vpcs(self) -> dict:
 
