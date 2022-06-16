@@ -11,7 +11,18 @@ class CostExplorer:
 
     def get_cost_and_usage(self, **params) -> dict:
 
-        data_return = self.__get_values_with_params(params.get("Filter.Dimensions.Values.0"))
+        filters = params.get('Filter')
+        if filters:
+            dimension_list = filters.get('Dimensions').get('Values')
+        else:
+            dimension_list = None
+
+        if isinstance(dimension_list, list):
+            dimension = dimension_list[0]
+        else:
+            dimension = None
+
+        data_return = self.__get_values_with_params(dimension)
 
         return {
             "ResultsByTime": data_return,
@@ -32,8 +43,6 @@ class CostExplorer:
         }
 
     def __get_values_with_params(self, service = None):
-
-        # print("------oi-------")
 
         serviceTranslationBag = {
             "tax": "Tax",
@@ -107,7 +116,7 @@ class CostExplorer:
             },
             "2017-05-12": {
                 "Tax": 0.00587164869451952,
-                "EC2": 0.736754368657322,
+                "EC2 - Other": 0.736754368657322,
                 "Amazon Elastic Compute Cloud - Compute": 0.0541338762984979,
                 "Amazon Simple Storage Service": 0.0253198289418126,
                 "AmazonWorkMail": 0.00132222073376983,
@@ -124,7 +133,7 @@ class CostExplorer:
             },
             "2017-05-13": {
                 "Tax": 0.0299832912632027,
-                "EC2": 0.372927787199885,
+                "EC2 - Other": 0.372927787199885,
                 "Amazon Elastic Compute Cloud - Compute": 0.000797423115319135,
                 "Amazon Simple Storage Service": 0.147615957271569,
                 "AmazonWorkMail": 0.231040508438865,
@@ -141,7 +150,7 @@ class CostExplorer:
             },
             "2017-05-14": {
                 "Tax": 0.737458871317735,
-                "EC2": 0.13996597163107,
+                "EC2 - Other": 0.13996597163107,
                 "Amazon Elastic Compute Cloud - Compute": 0.00198089159142963,
                 "Amazon Simple Storage Service": 0.0382445681771599,
                 "AmazonWorkMail": 4.54488730488031e-06,
@@ -158,7 +167,7 @@ class CostExplorer:
             },
             "2017-05-15": {
                 "Tax": 0.074842643694743,
-                "EC2": 0.13228242402978,
+                "EC2 - Other": 0.13228242402978,
                 "Amazon Elastic Compute Cloud - Compute": 0.000420580586643783,
                 "Amazon Simple Storage Service": 0.0322224514673983,
                 "AmazonWorkMail": 0.0682424932031637,
@@ -175,7 +184,7 @@ class CostExplorer:
             },
             "2017-05-16": {
                 "Tax": 0.595264991985727,
-                "EC2": 0.115540996885093,
+                "EC2 - Other": 0.115540996885093,
                 "Amazon Elastic Compute Cloud - Compute": 0.0418532304743227,
                 "Amazon Simple Storage Service": 0.060338551443287,
                 "AmazonWorkMail": 0.00645433680821152,
@@ -192,7 +201,7 @@ class CostExplorer:
             },
             "2017-05-17": {
                 "Tax": 0.000576420331467799,
-                "EC2": 0.165834114722552,
+                "EC2 - Other": 0.165834114722552,
                 "Amazon Elastic Compute Cloud - Compute": 0.229059552089792,
                 "Amazon Simple Storage Service": 0.0152395278877266,
                 "AmazonWorkMail": 0.1228783585259,
@@ -209,7 +218,7 @@ class CostExplorer:
             },
             "2017-05-18": {
                 "Tax": 0.000860992817200966,
-                "EC2": 0.00516902388619041,
+                "EC2 - Other": 0.00516902388619041,
                 "Amazon Elastic Compute Cloud - Compute": 0.102577544439013,
                 "Amazon Simple Storage Service": 0.170561320097467,
                 "AmazonWorkMail": 0.207268058041531,
@@ -226,7 +235,7 @@ class CostExplorer:
             },
             "2017-05-19": {
                 "Tax": 0.00800125611671711,
-                "EC2": 0.454923102859853,
+                "EC2 - Other": 0.454923102859853,
                 "Amazon Elastic Compute Cloud - Compute": 0.123806510422326,
                 "Amazon Simple Storage Service": 0.000746023929615768,
                 "AmazonWorkMail": 0.0225150913290986,
@@ -243,7 +252,7 @@ class CostExplorer:
             },
             "2017-05-20": {
                 "Tax": 0.0171447947573601,
-                "EC2": 0.947450564370959,
+                "EC2 - Other": 0.947450564370959,
                 "Amazon Elastic Compute Cloud - Compute": 0.013804833161357,
                 "Amazon Simple Storage Service": 0.000119064280025234,
                 "AmazonWorkMail": 0.00122685549525723,
@@ -260,7 +269,7 @@ class CostExplorer:
             },
             "2017-05-21": {
                 "Tax": 0.513151207446984,
-                "EC2": 0.000579854793031399,
+                "EC2 - Other": 0.000579854793031399,
                 "Amazon Elastic Compute Cloud - Compute": 0.0866743435416319,
                 "Amazon Simple Storage Service": 0.0167153325626347,
                 "AmazonWorkMail": 0.127892556577315,
@@ -277,7 +286,7 @@ class CostExplorer:
             },
             "2017-05-22": {
                 "Tax": 0.0260859645177361,
-                "EC2": 0.408090376870302,
+                "EC2 - Other": 0.408090376870302,
                 "Amazon Elastic Compute Cloud - Compute": 0.101343550916472,
                 "Amazon Simple Storage Service": 0.160220838033877,
                 "AmazonWorkMail": 0.0595577998793117,
@@ -294,7 +303,7 @@ class CostExplorer:
             },
             "2017-05-23": {
                 "Tax": 0.213751926592738,
-                "EC2": 0.172099780783149,
+                "EC2 - Other": 0.172099780783149,
                 "Amazon Elastic Compute Cloud - Compute": 0.00489025135784771,
                 "Amazon Simple Storage Service": 2.92099938364655e-05,
                 "AmazonWorkMail": 0.00552489397924033,
@@ -311,7 +320,7 @@ class CostExplorer:
             },
             "2017-05-24": {
                 "Tax": 0.779959671450317,
-                "EC2": 0.0172139665451165,
+                "EC2 - Other": 0.0172139665451165,
                 "Amazon Elastic Compute Cloud - Compute": 0.000425086977117722,
                 "Amazon Simple Storage Service": 0.0241127439527929,
                 "AmazonWorkMail": 3.73250244718355e-06,
@@ -328,7 +337,7 @@ class CostExplorer:
             },
             "2017-05-25": {
                 "Tax": 0.209090410036343,
-                "EC2": 0.572846137118067,
+                "EC2 - Other": 0.572846137118067,
                 "Amazon Elastic Compute Cloud - Compute": 0.013348695850936,
                 "Amazon Simple Storage Service": 0.0211725637955592,
                 "AmazonWorkMail": 0.00141757781513469,
@@ -345,7 +354,7 @@ class CostExplorer:
             },
             "2017-05-26": {
                 "Tax": 0.0763768880472465,
-                "EC2": 0.749221990697646,
+                "EC2 - Other": 0.749221990697646,
                 "Amazon Elastic Compute Cloud - Compute": 0.000282283001819282,
                 "Amazon Simple Storage Service": 0.000240138143148054,
                 "AmazonWorkMail": 0.000618942908127698,
@@ -362,7 +371,7 @@ class CostExplorer:
             },
             "2017-05-27": {
                 "Tax": 0.272494494559865,
-                "EC2": 0.136103569929197,
+                "EC2 - Other": 0.136103569929197,
                 "Amazon Elastic Compute Cloud - Compute": 2.44307455934785e-05,
                 "Amazon Simple Storage Service": 0.0442844882498305,
                 "AmazonWorkMail": 0.363054263479301,
@@ -379,7 +388,7 @@ class CostExplorer:
             },
             "2017-05-28": {
                 "Tax": 0.800165459357284,
-                "EC2": 0.0252042938753547,
+                "EC2 - Other": 0.0252042938753547,
                 "Amazon Elastic Compute Cloud - Compute": 0.170569033141787,
                 "Amazon Simple Storage Service": 0.0254327723940399,
                 "AmazonWorkMail": 0.00382357330872912,
@@ -396,7 +405,7 @@ class CostExplorer:
             },
             "2017-05-29": {
                 "Tax": 0.0311507917467185,
-                "EC2": 0.113563735642959,
+                "EC2 - Other": 0.113563735642959,
                 "Amazon Elastic Compute Cloud - Compute": 0.0590298142545421,
                 "Amazon Simple Storage Service": 0.151926014943913,
                 "AmazonWorkMail": 0.0603322799703922,
@@ -413,7 +422,7 @@ class CostExplorer:
             },
             "2017-05-30": {
                 "Tax": 0.244923581768557,
-                "EC2": 0.0439657425684782,
+                "EC2 - Other": 0.0439657425684782,
                 "Amazon Elastic Compute Cloud - Compute": 0.963280932195269,
                 "Amazon Simple Storage Service": 0.036736752038052,
                 "AmazonWorkMail": 0.0102139676093596,
@@ -430,7 +439,7 @@ class CostExplorer:
             },
             "2017-05-31": {
                 "Tax": 0.0247880785784552,
-                "EC2": 0.00108680032053173,
+                "EC2 - Other": 0.00108680032053173,
                 "Amazon Elastic Compute Cloud - Compute": 0.0108177878449217,
                 "Amazon Simple Storage Service": 0.200499856423063,
                 "AmazonWorkMail": 0.143689879608654,
@@ -447,7 +456,7 @@ class CostExplorer:
             },
             "2017-06-01": {
                 "Tax": 0.0298652504548833,
-                "EC2": 1.78297751430096,
+                "EC2 - Other": 1.78297751430096,
                 "Amazon Elastic Compute Cloud - Compute": 0.0873439490114476,
                 "Amazon Simple Storage Service": 0.506950754281554,
                 "AmazonWorkMail": 0.0773776905344538,
@@ -464,7 +473,7 @@ class CostExplorer:
             },
             "2017-06-02": {
                 "Tax": 0.00358541015637396,
-                "EC2": 0.0181198066551955,
+                "EC2 - Other": 0.0181198066551955,
                 "Amazon Elastic Compute Cloud - Compute": 0.731698412406645,
                 "Amazon Simple Storage Service": 0.00823188262370141,
                 "AmazonWorkMail": 0.243357116347546,
@@ -481,7 +490,7 @@ class CostExplorer:
             },
             "2017-06-03": {
                 "Tax": 0.00186941348963873,
-                "EC2": 0.296201436287152,
+                "EC2 - Other": 0.296201436287152,
                 "Amazon Elastic Compute Cloud - Compute": 0.0159227285645666,
                 "Amazon Simple Storage Service": 0.289023351607094,
                 "AmazonWorkMail": 0.251229973781939,
@@ -498,7 +507,7 @@ class CostExplorer:
             },
             "2017-06-04": {
                 "Tax": 0.145180817763851,
-                "EC2": 0.051611708821735,
+                "EC2 - Other": 0.051611708821735,
                 "Amazon Elastic Compute Cloud - Compute": 0.562354423203855,
                 "Amazon Simple Storage Service": 0.292836777503652,
                 "AmazonWorkMail": 0.0153817399494869,
@@ -515,7 +524,7 @@ class CostExplorer:
             },
             "2017-06-05": {
                 "Tax": 0.746787557499429,
-                "EC2": 0.0251479115594533,
+                "EC2 - Other": 0.0251479115594533,
                 "Amazon Elastic Compute Cloud - Compute": 0.0781158201597665,
                 "Amazon Simple Storage Service": 0.0203272990824157,
                 "AmazonWorkMail": 0.000396202080196234,
@@ -532,7 +541,7 @@ class CostExplorer:
             },
             "2017-06-06": {
                 "Tax": 0.0379553607558004,
-                "EC2": 0.875817006204726,
+                "EC2 - Other": 0.875817006204726,
                 "Amazon Elastic Compute Cloud - Compute": 0.0155164172724193,
                 "Amazon Simple Storage Service": 0.00404239412429527,
                 "AmazonWorkMail": 1.35962526070094e-05,
@@ -549,7 +558,7 @@ class CostExplorer:
             },
             "2017-06-07": {
                 "Tax": 0.0904749767089096,
-                "EC2": 0.700872576477453,
+                "EC2 - Other": 0.700872576477453,
                 "Amazon Elastic Compute Cloud - Compute": 0.00557164722950508,
                 "Amazon Simple Storage Service": 0.0540581883453801,
                 "AmazonWorkMail": 0.103944239076199,
@@ -566,7 +575,7 @@ class CostExplorer:
             },
             "2017-06-08": {
                 "Tax": 0.164437101259923,
-                "EC2": 0.383481991065009,
+                "EC2 - Other": 0.383481991065009,
                 "Amazon Elastic Compute Cloud - Compute": 0.000626032177027275,
                 "Amazon Simple Storage Service": 0.0436371651091275,
                 "AmazonWorkMail": 0.000946919732537033,
