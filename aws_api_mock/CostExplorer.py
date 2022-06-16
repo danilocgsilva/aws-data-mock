@@ -8,33 +8,6 @@ class CostExplorer:
 
     def set_mock_count(self, mock_count: int):
         self.mock_count = mock_count
-<<<<<<< HEAD
-
-    def get_cost_and_usage(self, **params) -> dict:
-
-        data_return = self.__get_values_with_params(params.get("Filter.Dimensions.Values.0"))
-
-        return {
-            "ResultsByTime": data_return,
-            "DimensionValueAttributes": [],
-            "ResponseMetadata": {
-                "RequestId": "39cca693-3d86-031b-203c-f197033ba02c",
-                "HTTPStatusCode": 200,
-                "HTTPHeaders": {
-                    "date": "Thu, 09 Jun 2017 10:47:16 GMT",
-                    "content-type": "application/x-amz-json-1.1",
-                    "content-length": "4688",
-                    "connection": "keep-alive",
-                    "x-amzn-requestid": "39cca693-3d86-031b-203c-f197033ba02c",
-                    "cache-control": "no-cache"
-                },
-                "RetryAttempts": 0
-            }
-        }
-
-    def __get_values_with_params(self, service = None):
-
-=======
 
     def get_cost_and_usage(self, **params) -> dict:
 
@@ -62,7 +35,6 @@ class CostExplorer:
 
         # print("------oi-------")
 
->>>>>>> wip
         serviceTranslationBag = {
             "tax": "Tax",
             "ec2": "EC2 - Other",
@@ -1059,10 +1031,6 @@ class CostExplorer:
 
         return base_result_by_time[:self.mock_count]
 
-<<<<<<< HEAD
-    def __build_result_by_time_payload(self) -> dict:
-        return {}
-=======
     def __build_result_by_time_payload(self, dayData: dict, service = None) -> dict:
 
         if not service:
@@ -1072,4 +1040,3 @@ class CostExplorer:
             return day_summed
 
         return dayData[service]
->>>>>>> wip
