@@ -5,6 +5,7 @@ class CostExplorer:
 
     def __init__(self):
         self.internals_data = {}
+        self.mock_count = 10
 
     def set_mock_count(self, mock_count: int):
         self.mock_count = mock_count
